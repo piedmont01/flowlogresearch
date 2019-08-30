@@ -1,0 +1,95 @@
+#
+# This commnand provides me all the VPC(s) associated with EC2 instances - vpc-5ef0b731 and vpc-64c92c01
+#
+
+echo "These are all the VPC(s)"
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].VpcId' --output text | sort -u
+
+# With the VPC I can find the interface of the EC2 instance with will help in determining the appropriate flow log
+ 
+echo "These are all the interfaces for vpc-5ef0b731"
+aws ec2 describe-instances --filters "Name=vpc-id,Values=vpc-5ef0b731" --query 'Reservations[*].Instances[*].NetworkInterfaces[*].NetworkInterfaceId'  --output text 
+echo "These are all the interfaces for vpc-64c92c01"
+aws ec2 describe-instances --filters "Name=vpc-id,Values=vpc-64c92c01" --query 'Reservations[*].Instances[*].NetworkInterfaces[*].NetworkInterfaceId'  --output text 
+
+# Knowing the VPC from above I can see all the logstreams 
+
+echo "These are all the logs for cfg-cloudwatch-vpc-5ef0b731"
+aws logs describe-log-streams --log-group-name cfg-cloudwatch-vpc-5ef0b731 --query "logStreams[].logStreamName" 
+echo "These are all the logs for cfg-cloudwatch-vpc-64c92c01"
+aws logs describe-log-streams --log-group-name cfg-cloudwatch-vpc-64c92c01 --query "logStreams[].logStreamName" 
+
+# aws ec2 describe-instances --filters "Name=vpc-id,Values=vpc-5ef0b731" --query 'Reservations[*].Instances[*].NetworkInterfaces[*].NetworkInterfaceId'  --output text  | sed 's/$/-all/'
+
+#for interface in eni-9263bfe5-all eni-23395d54-all eni-deaa76f5-all eni-5c925a07-all eni-bf1fde93-all eni-8c20e1a0-all eni-7d088451-all eni-d90985f5-all eni-e1c0e3ac-all eni-d7b6d298-all eni-c855a588-all eni-06ed5423-all eni-8fb8e49e-all eni-614fef78-all eni-05a048d9d58b0b66a-all eni-0de62491d534658b5-all eni-0444ac05aaac96ca5-all eni-0601d34bdce8c1e68-all eni-06fb529ef0ddeb7a4-all
+#do
+#  echo $interface
+#  aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name  $interface --query "events[].message" | awk '{ print $4 }' | sort -u 
+#  if [ $? != 0 ]
+#  then
+#    echo "Error: $interface"
+#  fi
+#done
+
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-9263bfe5-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-23395d54-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-deaa76f5-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-5c925a07-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-bf1fde93-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-8c20e1a0-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-7d088451-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-d90985f5-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-e1c0e3ac-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-d7b6d298-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-c855a588-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-06ed5423-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-8fb8e49e-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-614fef78-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-0de62491d534658b5-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-0444ac05aaac96ca5-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-0601d34bdce8c1e68-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-06fb529ef0ddeb7a4-all --query "events[].message" | awk '{ print $4 }' | sort -u
+#aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name eni-0ee73b08ab3641481-all --query "events[].message" | awk '{ print $4 }' | sort -u
+
+# Query unused network interfaces
+# aws ec2 describe-network-interfaces --region us-east-1 --output table --filters Name=status,Values=available --query 'NetworkInterfaces[*].{ENI:NetworkInterfaceId}'
+
+
+# aws ec2 describe-instances --filters "Name=network-interface.addresses.private-ip-address,Values=172.*"
+
+# --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value'
+
+# return information on specific network interface
+# aws ec2 describe-network-interfaces --region us-east-1 --output table --filter "Name=network-interface-id, Values=eni-065e6f2e"
+
+# get the instance id associated with a particular network interface
+# aws ec2 describe-network-interfaces --region us-east-1 --output text --filter "Name=network-interface-id, Values=eni-065e6f2e" --query ' NetworkInterfaces[].[Attachment.InstanceId]'
+
+# all interfaces in use for a particular VPC 
+# aws ec2 describe-network-interfaces --region us-east-1 --output text --filters  "Name=vpc-id, Values=vpc-64c92c01, Name=status, Values=in-use"  --query 'NetworkInterfaces[*].{ENI:NetworkInterfaceId}'
+
+# Return the name of the instance associated with network interface
+# aws ec2 describe-instances --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-065e6f2e"
+
+# Give me all the VPC(s) that are hosting EC2 instances
+vpc_list=`aws ec2 describe-instances --query 'Reservations[*].Instances[*].VpcId' --output text | sort -u`
+
+# list of interfaces is double DOES NOT WORK
+#for vpc in `echo $vpc_list`
+#do
+#  echo "VPC: $vpc"
+#  echo "------------------------------"
+#  for interface in `aws ec2 describe-network-interfaces --region us-east-1 --output text --filters  "Name=vpc-id, Values=$vpc, Name=status, Values=in-use"  --query 'NetworkInterfaces[*].{ENI:NetworkInterfaceId}'`
+#  do
+#    echo "Interface: $interface"
+#    echo "------------------------------"
+#    aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=$interface"
+#  done
+#done
+
+
+for interface in `aws ec2 describe-network-interfaces --region us-east-1 --output text --filters  "Name=vpc-id, Values=vpc-5ef0b731, Name=status, Values=in-use"  --query 'NetworkInterfaces[*].{ENI:NetworkInterfaceId}'`
+do
+  echo $interface
+  aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=$interface"
+done
