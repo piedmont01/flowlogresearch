@@ -93,3 +93,80 @@ do
   echo $interface
   aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=$interface"
 done
+
+
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-b7f84bfb"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-0d962f4f511a65337"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-614fef78"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-5c925a07"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-6298ea15"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-587e6875"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-8fb8e49e"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-0a7bacb999d523336"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-bf1fde93"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-e1c0e3ac"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-deaa76f5"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-0e60410555d919406"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-05b24b7d95a0596df"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-5dfcca70"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-08fbe817542879f87"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-18550e35"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-065e6f2e"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-0da8616e2574d67dc"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-d7527598"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-792b0032"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-d90985f5"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-23395d54"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-7d088451"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-28aa0b61"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-c855a588"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-d7b6d298"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-9263bfe5"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-bc82fa93"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-945196bb"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-504b661e"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-04e302b0d6b16dd99"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-06ed5423"
+aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=eni-8c20e1a0"
+
+for int in eni-b7f84bfb  \
+	eni-0d962f4f511a65337 \
+	eni-614fef78 \
+	eni-5c925a07 \
+	eni-6298ea15 \
+	eni-587e6875 \
+	eni-8fb8e49e \
+	eni-0a7bacb999d523336 \
+	eni-bf1fde93 \
+	eni-e1c0e3ac \
+	eni-deaa76f5 \
+	eni-0e60410555d919406 \
+	eni-05b24b7d95a0596df \
+	eni-5dfcca70 \
+	eni-08fbe817542879f87 \
+	eni-18550e35 \
+	eni-065e6f2e \
+	eni-0da8616e2574d67dc \
+	eni-d7527598 \
+	eni-792b0032 \
+	eni-d90985f5 \
+	eni-23395d54 \
+	eni-7d088451 \
+	eni-28aa0b61 \
+	eni-c855a588 \
+	eni-d7b6d298 \
+	eni-9263bfe5 \
+	eni-bc82fa93 \
+	eni-945196bb \
+	eni-504b661e \
+	eni-04e302b0d6b16dd99 \
+	eni-06ed5423 \
+	eni-8c20e1a0 
+do
+	aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=$int"
+	# aws logs get-log-events --log-group-name  cfg-cloudwatch-vpc-5ef0b731  --log-stream-name  $int-all --query "events[].message" | awk '{ print $4 }' | sort -u
+done
+
+# aws ec2 describe-instances --filters "Name=tag:Name,Values=orc-mq"
+
+# netwkid=`aws ec2 describe-instances --filters "Name=tag:Name,Values=orc-mq" | jq .Reservations[0].Instances[0].NetworkInterfaces[0].NetworkInterfaceId | sed 's/"//g'`
