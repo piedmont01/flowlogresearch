@@ -1,0 +1,29 @@
+answer=$1
+for vpc in vpc-5ef0b731 vpc-64c92c01
+  do
+  echo "VPC is $vpc"
+  for each in `aws ec2 describe-instances --filters "Name=vpc-id,Values=$vpc" --query 'Reservations[*].Instances[*].NetworkInterfaces[*].NetworkInterfaceId'  --output text`
+  do  
+    echo "Interface: $each"
+    aws ec2 describe-instances --output text --query 'Reservations[*].Instances[].Tags[?Key==`Name`].Value' --filters "Name=instance-state-name,Values=running,Name=network-interface.network-interface-id , Values=$each"
+    srcaddr=`aws logs get-log-events --log-group-name  cfg-cloudwatch-$vpc  --log-stream-name $each-all --query "events[].message"  | awk '{ print $4 }' | sort -u`
+    for i in `echo $srcaddr`
+      do
+        if [ "$answer" == "yes"  ]
+        then
+          name=`dig +short $i`
+          if [ $? -eq 0 ]
+          then 
+            if [ -z "$name" ]
+            then
+              echo "$i"
+            else
+              echo "hostname: $name and IP address: $i"
+            fi
+          fi
+        else
+          echo "$i"
+        fi
+    done
+  done
+done
