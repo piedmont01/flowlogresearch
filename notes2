@@ -17,6 +17,7 @@
 #				OK: Data is logging normally to the chosen destinations.
 #				NODATA: There was no network traffic to or from the network interface during the capture window.
 
+# ver, acc, inter, src, dst, srcport, destport, proto, pack, byt, strt, end, acti, log-stat
 
 answer=$1
 for vpc in vpc-5ef0b731 vpc-64c92c01
@@ -47,3 +48,6 @@ for vpc in vpc-5ef0b731 vpc-64c92c01
     done
   done
 done
+
+# get name and IP address of instance
+aws ec2 describe-instances --output json --query 'Reservations[*].Instances[]. [ NetworkInterfaces[].PrivateIpAddresses[],Tags[?Key==`Name`].Value ]'
