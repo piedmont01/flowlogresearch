@@ -1,0 +1,4 @@
+aws ec2 describe-instances --output table --query 'Reservations[*].Instances[*].[InstanceId,SecurityGroups[].GroupName | join(`, `, @),Placement.AvailabilityZone,BlockDeviceMappings[].DeviceName | join(`, `, @), BlockDeviceMappings[].Ebs.DeleteOnTermination | join(`, `, to_array(to_string(@)))]'
+
+aws ec2 describe-instances  --query 'Reservations[*].Instances[].[ Tags[?Key==`Name`].Value |  join(`, `, @), NetworkInterfaces[].PrivateIpAddress[] |  join(`, `, to_array(to_string(@))) ]' --profile famc-legacy --region us-east-1 --output table
+

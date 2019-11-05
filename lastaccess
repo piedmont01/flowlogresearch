@@ -1,1 +1,7 @@
-custodian ekendall$ for each in `cat /tmp/arn`; do   echo $each;   var=`aws iam generate-service-last-accessed-details --arn  $each --output text `; aws iam get-service-last-accessed-details --job-id $var; done > log
+for each in `cat /tmp/arn`
+do
+  echo $each
+  var=`aws iam generate-service-last-accessed-details --arn  $each --output text`
+  aws iam get-service-last-accessed-details --job-id $var
+#   aws iam get-service-last-accessed-details-with-entities --job-id $var
+done
